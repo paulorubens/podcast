@@ -13,7 +13,7 @@ PodcastController.controller('PodcastCtrl', ['$scope', '$http', function ($scope
 
     $scope.selecionado = {};
 
-    $http.get('/podcast/podcast/IndexJSON').success(function (data) {
+    $http.get('/podcast/IndexJSON').success(function (data) {
         $scope.model.Podcasts = data;
     });
 

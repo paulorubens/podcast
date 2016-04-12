@@ -238,3 +238,4 @@ _Pvt_Extensions
 # Removendo arquivos de mídia (imagem e audio)
 Podcast/media/audio/*.mp3
 Podcast/media/image/*.jpg
+Podcast/media/image/*.png
