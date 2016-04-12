@@ -234,3 +234,7 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# Removendo arquivos de mídia (imagem e audio)
+Podcast/media/audio/*.mp3
+Podcast/media/image/*.jpg

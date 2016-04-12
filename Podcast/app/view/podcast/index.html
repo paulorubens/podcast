@@ -1,0 +1,32 @@
+﻿
+<div class="container" ng-app="app" ng-controller="PodcastCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Lista</h2>
+            {{model.Podcasts}}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Dt Gravação</th>
+                        <th>Descrição</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="time in model.Podcasts">
+                        <td>{{time.dsTitulo}}</td>
+                        <td>{{time.dtGravacao}}</td>
+                        <td>{{time.nrEdicao}}</td>
+                        <td images code="time.nmArquivoImagem"></td>
+                        <td audios code="time.nmArquivoAudio"></td>
+                    </tr>
+                    <tr ng-if="model.Podcasts.length == 0">
+                        <td colspan="5">Não existem times cadastrados</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

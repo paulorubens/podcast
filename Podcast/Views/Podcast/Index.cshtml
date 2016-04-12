@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Podcast.Models.PodcastBase>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dsTitulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsPodcast)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dtGravacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nrEdicao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nmArquivoAudio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nmArquivoImagem)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsTitulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsPodcast)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtGravacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nrEdicao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nmArquivoAudio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nmArquivoImagem)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PodcastBaseID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PodcastBaseID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PodcastBaseID })
+        </td>
+    </tr>
+}
+
+</table>

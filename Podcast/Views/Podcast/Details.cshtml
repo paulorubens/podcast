@@ -1,0 +1,66 @@
+﻿@model Podcast.Models.PodcastBase
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PodcastBase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dsTitulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dsTitulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dsPodcast)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dsPodcast)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtGravacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtGravacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nrEdicao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nrEdicao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nmArquivoAudio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nmArquivoAudio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nmArquivoImagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nmArquivoImagem)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PodcastBaseID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
