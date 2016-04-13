@@ -23,7 +23,7 @@ namespace Podcast.Controllers
 
         public ActionResult IndexJSON()
         {
-            return Json(db.Podcasts.ToList().OrderByDescending(p => p.nrEdicao), JsonRequestBehavior.AllowGet);
+            return Json(db.Podcasts.ToList().OrderByDescending(p => p.dtGravacao), JsonRequestBehavior.AllowGet);
         }
 
         // GET: Podcast/Details/5

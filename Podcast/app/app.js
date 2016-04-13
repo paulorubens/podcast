@@ -14,7 +14,7 @@ app.config(['$routeProvider',
             controller: 'PodcastCtrl'
         }).
         otherwise({
-            redirectTo: ''
+            redirectTo: 'ouvir'
         });
   }]);
 
