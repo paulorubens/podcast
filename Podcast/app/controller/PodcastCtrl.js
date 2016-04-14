@@ -1,6 +1,6 @@
 ﻿var PodcastController = angular.module('Podcast.PodcastController', []);
 
-PodcastController.controller('PodcastCtrl', ['$scope', '$http', function ($scope, $http) {
+PodcastController.controller('PodcastCtrl', ['$scope', '$http', 'fileUpload', function ($scope, $http, fileUpload) {
     $scope.model = {
         Podcasts: {}
     };
@@ -39,5 +39,15 @@ PodcastController.controller('PodcastCtrl', ['$scope', '$http', function ($scope
             mes = "0" + mes;
         var ano = data.getFullYear();
         return dia + "/" + mes + "/" + ano;
-    }
+    };
+
+    $scope.uploadFile = function () {
+        var file = $scope.myFile;
+
+        console.log('file is ');
+        console.dir(file);
+
+        var uploadUrl = "podcast/Upload";
+        fileUpload.uploadFileToUrl(file, uploadUrl);
+    };
 }]);

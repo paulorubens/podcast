@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Podcast.DAL;
 using Podcast.Models;
+using System.IO;
 
 namespace Podcast.Controllers
 {
@@ -128,6 +129,26 @@ namespace Podcast.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Upload()
+        {
+            int arquivosSalvos = 0;
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                HttpPostedFileBase arquivo = Request.Files[i];
+
+                //Salva o arquivo
+                if (arquivo.ContentLength > 0)
+                {
+                    var uploadPath = Server.MapPath("~/media");
+                    string caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
+
+                    arquivo.SaveAs(caminhoArquivo);
+                    arquivosSalvos++;
+                }
+            }
+            return RedirectToAction("Index");
         }
     }
 }
