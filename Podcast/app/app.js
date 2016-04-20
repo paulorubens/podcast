@@ -66,6 +66,63 @@ app.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
+app.directive("fileread", [function () {
+        return {
+            restrict: 'EA',
+            required: 'ngModel',
+            template: '<div class="row" ng-if="showFile">' +
+                            '<img src="{{fileB64}}" a alt="..." class="img-thumbnail col-sm-4" />' +
+                        '</div>' +
+                        '<div class="row">' +
+                            '<div class="input-group col-sm-4">' +
+                                '<input type="file" class="form-control input-file" accept=".jpg, .png" style="display: none;" />' +
+                                '<input type="text" class="form-control" readonly="readonly" ng-model="fileread.name"/>' +
+                                '<span class="group-span-filestyle input-group-btn" tabindex="0" ng-click="selectFile()">' +
+                                    '<label for="filestyle-9" class="btn btn-default" >' +
+                                        '<span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span>' +
+                                        '<span class="buttonText">Selecione</span>' +
+                                    '</label>' +
+                                '</span>' +
+                            '</div>' +
+                        '</div>',
+            scope: {
+                ngModel: "=",
+                fileType: "=",
+            },
+            controller: function ($scope, $element) {
+                $scope.fileread = {};
+                $scope.selectFile = function () {
+                    $element.find('[type="file"]').click();
+                };
+                $scope.showFile = false;
+            },
+            link: function (scope, element, attributes) {
+                element.bind("change", function (changeEvent) {
+                    scope.$apply(function () {
+                        scope.fileread = changeEvent.target.files[0];
+
+                        var FR = new FileReader();
+                        FR.onload = function ( e ) {
+                            scope.$apply(function () {
+                                scope.showFile = true;
+                                scope.fileB64 = e.target.result;
+                            });
+                        };
+                        FR.readAsDataURL(scope.fileread);
+                    });
+                });
+
+                scope.$watch('ngModel', function () {
+                    if (angular.isDefined(scope.ngModel) && scope.ngModel != "") {
+                        scope.showFile = true;
+                        scope.fileB64 = 'data:image/jpeg;base64,' + scope.ngModel;
+                    }
+                });
+
+            }
+        }
+    }])
+
 app.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function (file, uploadUrl) {
         var fd = new FormData();

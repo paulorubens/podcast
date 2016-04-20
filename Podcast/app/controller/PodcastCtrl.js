@@ -1,6 +1,6 @@
 ﻿var PodcastController = angular.module('Podcast.PodcastController', []);
 
-PodcastController.controller('PodcastCtrl', ['$scope', '$http', 'fileUpload', function ($scope, $http, fileUpload) {
+PodcastController.controller('PodcastCtrl', ['$scope', '$http', '$location', 'fileUpload', function ($scope, $http, $location, fileUpload) {
     $scope.model = {
         Podcasts: {}
     };
@@ -24,6 +24,14 @@ PodcastController.controller('PodcastCtrl', ['$scope', '$http', 'fileUpload', fu
             return 'display';
     };
 
+    $scope.limparCampos = function () {
+        $scope.novo = {};
+    };
+
+    $scope.cancelar = function () {
+        $location.url('/ouvir');
+    };
+
     $scope.returnDate = function (podcast, data) {
         var date = new Date(parseInt(data.substr(6)));
         podcast.dtGravacao = angular.copy(date);
@@ -41,11 +49,35 @@ PodcastController.controller('PodcastCtrl', ['$scope', '$http', 'fileUpload', fu
         return dia + "/" + mes + "/" + ano;
     };
 
-    $scope.uploadFile = function () {
-        var file = $scope.myFile;
+    $scope.salvarPodcast = function () {
+        $scope.novo.nmArquivoAudio = $scope.audioFile.name;
+        $scope.novo.nmArquivoImagem = $scope.imageFile.name;
 
-        console.log('file is ');
-        console.dir(file);
+        $http.post('podcast/Create', $scope.novo).success(function (data) {
+            $scope.uploadAudioFile();
+            $scope.uploadImageFile();
+
+            $location.url('/ouvir');
+        });
+
+        $location.url('/ouvir');
+    };
+
+    $scope.uploadAudioFile = function () {
+        var file = $scope.audioFile;
+
+        //console.log('file is ');
+        //console.dir(file);
+
+        var uploadUrl = "podcast/Upload";
+        fileUpload.uploadFileToUrl(file, uploadUrl);
+    };
+
+    $scope.uploadImageFile = function () {
+        var file = $scope.imageFile;
+
+        //console.log('file is ');
+        //console.dir(file);
 
         var uploadUrl = "podcast/Upload";
         fileUpload.uploadFileToUrl(file, uploadUrl);

@@ -1,7 +1,6 @@
 ﻿<div class="container" ng-app="app" ng-controller="PodcastCtrl">
     <div class="row">
         <div class="col-md-12">
-            {{novo}}
             <div>
                 <div style="width:150px">
                     <table>
@@ -14,10 +13,19 @@
                                     <input type="text" class="form-control" placeholder="Data de Gravação" ng-model="novo.dtGravacao" />
                                     <label>Descrição</label><br />
                                     <input type="text" class="form-control" placeholder="Descrição" ng-model="novo.dsPodcast" />
+                                    <label>Nr Edição</label><br />
+                                    <input type="text" class="form-control" placeholder="Descrição" ng-model="novo.nrEdicao" />
                                     <label>Arquivo de áudio</label><br />
-                                    <input type="file" />
+                                    <input type="file" file-model="audioFile" ng-model="novo.nmArquivoAudio" />
                                     <label>Arquivo de imagem</label><br />
-                                    <input type="file" />
+                                    <input type="file" file-model="imageFile" ng-model="novo.nmArquivoImagem" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br />
+                                    <button ng-click="salvarPodcast()" class="btn btn-primary">Salvar</button>
+                                    <button ng-click="cancelar()" class="btn btn-default">Cancelar</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -25,14 +33,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <input type="file" file-model="myFile" />
-        <button ng-click="uploadFile()">upload</button>
     </div>
 </div>
