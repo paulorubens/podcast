@@ -1,5 +1,6 @@
 ﻿using Podcast.Models;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 
 namespace Podcast.DAL
 {
@@ -8,6 +9,8 @@ namespace Podcast.DAL
         public PodcastContext()
             : base("PodcastContext")
         {
+            Database.SetInitializer<PodcastContext>(new MigrateDatabaseToLatestVersion<PodcastContext, Configuration>());
+
         }
 
         public DbSet<PodcastBase> Podcasts { get; set; }
