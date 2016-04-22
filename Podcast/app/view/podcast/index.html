@@ -1,4 +1,4 @@
-﻿<div class="container" ng-app="app" ng-controller="PodcastCtrl">
+﻿<div class="container" ng-app="app">
     <div class="row">
         <div class="col-md-12">
 
@@ -12,7 +12,7 @@
                                 </td>
                                 <td>
                                     <label style="width: 100%">{{podcast.dsTitulo}}</label>
-                                    <label>{{podcast.dtGravacao}}</label><br />
+                                    <label ng-init="returnDate(podcast, podcast.dtGravacao)">{{podcast.dtGravacaoVW}}</label><br />
                                     <label>{{podcast.dsPodcast}}</label><br />
                                     <div audios code="podcast.nmArquivoAudio"></div>
                                 </td>

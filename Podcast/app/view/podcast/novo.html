@@ -1,4 +1,4 @@
-﻿<div class="container" ng-app="app" ng-controller="PodcastCtrl">
+﻿<div class="container" ng-app="app">
     <div class="row">
         <div class="col-md-12">
             <div>
@@ -10,9 +10,9 @@
                                     <label style="width: 100%">Título</label>
                                     <input type="text" class="form-control" placeholder="Título" ng-model="novo.dsTitulo" />
                                     <label>Data de Gravação</label><br />
-                                    <input type="text" class="form-control" placeholder="Data de Gravação" ng-model="novo.dtGravacao" />
+                                    <input type="date" class="form-control" placeholder="Data de Gravação" ng-model="novo.dtGravacao" />
                                     <label>Descrição</label><br />
-                                    <input type="text" class="form-control" placeholder="Descrição" ng-model="novo.dsPodcast" />
+                                    <textarea type="text" class="form-control" placeholder="Descrição" ng-model="novo.dsPodcast" />
                                     <label>Nr Edição</label><br />
                                     <input type="text" class="form-control" placeholder="Descrição" ng-model="novo.nrEdicao" />
                                     <label>Arquivo de áudio</label><br />

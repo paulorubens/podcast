@@ -7,11 +7,11 @@ app.config(['$routeProvider',
       $routeProvider.
         when('/novo', {
             templateUrl: 'app/view/podcast/novo.html',
-            controller: 'PodcastCtrl'
+            controller: 'PodcastNovoCtrl'
         }).
         when('/ouvir', {
             templateUrl: 'app/view/podcast/index.html',
-            controller: 'PodcastCtrl'
+            controller: 'PodcastIndexCtrl'
         }).
         otherwise({
             redirectTo: 'ouvir'
@@ -39,7 +39,7 @@ app.directive('images', function ($sce) {
         restrict: 'A',
         scope: { code: '=' },
         replace: true,
-        template: '<img height="100%" width="100%" ng-src="{{url}}" ></img>',
+        template: '<img ng-src="{{url}}" ></img>',
         link: function (scope) {
             scope.$watch('code', function (newVal, oldVal) {
                 if (newVal !== undefined) {

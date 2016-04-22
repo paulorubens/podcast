@@ -1,6 +1,7 @@
-﻿var PodcastController = angular.module('Podcast.PodcastController', []);
+var PodcastController = angular.module('Podcast.PodcastController', []);
 
-PodcastController.controller('PodcastCtrl', ['$scope', '$http', '$location', 'fileUpload', function ($scope, $http, $location, fileUpload) {
+PodcastController
+.controller('PodcastIndexCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
     $scope.model = {
         Podcasts: {}
     };
@@ -8,8 +9,6 @@ PodcastController.controller('PodcastCtrl', ['$scope', '$http', '$location', 'fi
     $scope.states = {
         ShowForm: false
     };
-
-    $scope.novo = {};
 
     $scope.selecionado = {};
 
@@ -22,14 +21,6 @@ PodcastController.controller('PodcastCtrl', ['$scope', '$http', '$location', 'fi
             return 'edit';
         else
             return 'display';
-    };
-
-    $scope.limparCampos = function () {
-        $scope.novo = {};
-    };
-
-    $scope.cancelar = function () {
-        $location.url('/ouvir');
     };
 
     $scope.returnDate = function (podcast, data) {
@@ -47,6 +38,19 @@ PodcastController.controller('PodcastCtrl', ['$scope', '$http', '$location', 'fi
             mes = "0" + mes;
         var ano = data.getFullYear();
         return dia + "/" + mes + "/" + ano;
+    };
+}])
+
+.controller('PodcastNovoCtrl', ['$scope', '$http', '$location', 'fileUpload', function ($scope, $http, $location, fileUpload) {
+
+    $scope.novo = {};
+
+    $scope.limparCampos = function () {
+        $scope.novo = {};
+    };
+
+    $scope.cancelar = function () {
+        $location.url('/ouvir');
     };
 
     $scope.salvarPodcast = function () {
@@ -82,4 +86,5 @@ PodcastController.controller('PodcastCtrl', ['$scope', '$http', '$location', 'fi
         var uploadUrl = "podcast/Upload";
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
+
 }]);
