@@ -39,7 +39,7 @@ app.directive('images', function ($sce) {
         restrict: 'A',
         scope: { code: '=' },
         replace: true,
-        template: '<img ng-src="{{url}}" ></img>',
+        template: '<img ng-src="{{url}}" class="img-rounded" ></img>',
         link: function (scope) {
             scope.$watch('code', function (newVal, oldVal) {
                 if (newVal !== undefined) {
