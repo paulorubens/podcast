@@ -2,25 +2,24 @@
     <div class="row">
         <div class="col-md-12">
 
-            <div ng-repeat="podcast in model.Podcasts">
-                <div style="width:150px">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td align="center" style="padding: 3px">
-                                    <div width="130px" height="130px" images code="podcast.nmArquivoImagem"></div>
-                                </td>
-                                <td>
-                                    <label style="width: 100%">{{podcast.dsTitulo}}</label>
-                                    <label ng-init="returnDate(podcast, podcast.dtGravacao)">{{podcast.dtGravacaoVW}}</label><br />
-                                    <label>{{podcast.dsPodcast}}</label><br />
-                                    <div audios code="podcast.nmArquivoAudio"></div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div style="width:150px" ng-repeat="episodio in model.Episodios">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td align="center" style="padding: 3px">
+                                <div width="130px" height="130px" images code="episodio.nmArquivoImagem"></div>
+                            </td>
+                            <td>
+                                <label style="width: 100%">{{episodio.dsTitulo}}</label>
+                                <label ng-init="returnDate(episodio, podcast.dtGravacao)">{{episodio.dtGravacaoVW}}</label><br />
+                                <label>{{episodio.dsPodcast}}</label><br />
+                                <div audios code="episodio.nmArquivoAudio"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
         </div>
     </div>
 </div>

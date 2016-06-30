@@ -13,7 +13,7 @@ namespace Podcast.DAL
 
         }
 
-        public DbSet<PodcastBase> Podcasts { get; set; }
+        public DbSet<Episodio> Episodios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

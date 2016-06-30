@@ -1,9 +1,9 @@
-var PodcastController = angular.module('Podcast.PodcastController', []);
+var PodcastController = angular.module('Podcast.EpisodioController', []);
 
 PodcastController
-.controller('PodcastIndexCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+.controller('EpisodioIndexCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
     $scope.model = {
-        Podcasts: {}
+        Episodios: {}
     };
 
     $scope.states = {
@@ -12,8 +12,8 @@ PodcastController
 
     $scope.selecionado = {};
 
-    $http.get('podcast/IndexJSON').success(function (data) {
-        $scope.model.Podcasts = data;
+    $http.get('episodio/IndexJSON').success(function (data) {
+        $scope.model.Episodios = data;
     });
 
     $scope.getTemplate = function (time) {
@@ -41,7 +41,7 @@ PodcastController
     };
 }])
 
-.controller('PodcastNovoCtrl', ['$scope', '$http', '$location', 'fileUpload', function ($scope, $http, $location, fileUpload) {
+.controller('EpisodioNovoCtrl', ['$scope', '$http', '$location', 'fileUpload', function ($scope, $http, $location, fileUpload) {
 
     $scope.novo = {};
 
@@ -57,7 +57,7 @@ PodcastController
         $scope.novo.nmArquivoAudio = $scope.audioFile.name;
         $scope.novo.nmArquivoImagem = $scope.imageFile.name;
 
-        $http.post('podcast/Create', $scope.novo).success(function (data) {
+        $http.post('episodio/Create', $scope.novo).success(function (data) {
             $scope.uploadAudioFile();
             $scope.uploadImageFile();
 
@@ -73,7 +73,7 @@ PodcastController
         //console.log('file is ');
         //console.dir(file);
 
-        var uploadUrl = "podcast/Upload";
+        var uploadUrl = "episodio/Upload";
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
 
@@ -83,7 +83,7 @@ PodcastController
         //console.log('file is ');
         //console.dir(file);
 
-        var uploadUrl = "podcast/Upload";
+        var uploadUrl = "episodio/Upload";
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
 

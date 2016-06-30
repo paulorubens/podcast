@@ -12,30 +12,30 @@ using System.IO;
 
 namespace Podcast.Controllers
 {
-    public class PodcastController : Controller
+    public class EpisodioController : Controller
     {
         private PodcastContext db = new PodcastContext();
 
         // GET: Podcast
         public ActionResult Index()
         {
-            return View(db.Podcasts.ToList());
+            return View(db.Episodios.ToList());
         }
 
         public ActionResult IndexJSON()
         {
-            return Json(db.Podcasts.ToList().OrderByDescending(p => p.dtGravacao), JsonRequestBehavior.AllowGet);
+            return Json(db.Episodios.ToList().OrderByDescending(p => p.dtGravacao), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Create(PodcastBase podcastBase)
+        public ActionResult Create(Episodio episodio)
         {
             if ((ModelState.IsValid) &&
-                (podcastBase.dsTitulo != ""))
+                (episodio.dsTitulo != ""))
             {
-                if (podcastBase.PodcastBaseID == 0)
-                    db.Podcasts.Add(podcastBase);
+                if (episodio.EpisodioID == 0)
+                    db.Episodios.Add(episodio);
                 else
-                    db.Entry(podcastBase).State = EntityState.Modified;
+                    db.Entry(episodio).State = EntityState.Modified;
 
                 db.SaveChanges();
             }
@@ -54,7 +54,7 @@ namespace Podcast.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PodcastBase podcastBase = db.Podcasts.Find(id);
+            Episodio podcastBase = db.Episodios.Find(id);
             if (podcastBase == null)
             {
                 return HttpNotFound();
@@ -67,7 +67,7 @@ namespace Podcast.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PodcastBaseID,dsTitulo,dsPodcast,dtGravacao,nrEdicao,nmArquivoAudio,nmArquivoImagem")] PodcastBase podcastBase)
+        public ActionResult Edit([Bind(Include = "PodcastBaseID,dsTitulo,dsPodcast,dtGravacao,nrEdicao,nmArquivoAudio,nmArquivoImagem")] Episodio podcastBase)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Podcast.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PodcastBase podcastBase = db.Podcasts.Find(id);
+            Episodio podcastBase = db.Episodios.Find(id);
             if (podcastBase == null)
             {
                 return HttpNotFound();
@@ -98,8 +98,8 @@ namespace Podcast.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PodcastBase podcastBase = db.Podcasts.Find(id);
-            db.Podcasts.Remove(podcastBase);
+            Episodio podcastBase = db.Episodios.Find(id);
+            db.Episodios.Remove(podcastBase);
             db.SaveChanges();
 
             DeleteArquivo("/media/audio/" + podcastBase.nmArquivoAudio);

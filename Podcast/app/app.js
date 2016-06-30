@@ -1,17 +1,17 @@
 ﻿var app = angular.module('app'
     , ['ngRoute'
-    , 'Podcast.PodcastController']);
+    , 'Podcast.EpisodioController']);
 
 app.config(['$routeProvider',
   function ($routeProvider) {
       $routeProvider.
         when('/novo', {
             templateUrl: 'app/view/podcast/novo.html',
-            controller: 'PodcastNovoCtrl'
+            controller: 'EpisodioNovoCtrl'
         }).
         when('/ouvir', {
             templateUrl: 'app/view/podcast/index.html',
-            controller: 'PodcastIndexCtrl'
+            controller: 'EpisodioIndexCtrl'
         }).
         otherwise({
             redirectTo: 'ouvir'

@@ -128,13 +128,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PodcastController.cs" />
+    <Compile Include="Controllers\EpisodioController.cs" />
     <Compile Include="DAL\Configuration.cs" />
     <Compile Include="DAL\PodcastContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PodcastBase.cs" />
+    <Compile Include="Models\Episodio.cs" />
+    <Compile Include="Models\Podcast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,11 +183,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Podcast\Create.cshtml" />
-    <Content Include="Views\Podcast\Delete.cshtml" />
-    <Content Include="Views\Podcast\Details.cshtml" />
-    <Content Include="Views\Podcast\Edit.cshtml" />
-    <Content Include="Views\Podcast\Index.cshtml" />
+    <Content Include="Views\Episodio\Create.cshtml" />
+    <Content Include="Views\Episodio\Delete.cshtml" />
+    <Content Include="Views\Episodio\Details.cshtml" />
+    <Content Include="Views\Episodio\Edit.cshtml" />
+    <Content Include="Views\Episodio\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
