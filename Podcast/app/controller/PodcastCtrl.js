@@ -87,4 +87,7 @@ PodcastController
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
 
+    $scope.baixar = function (arquivo) {
+        window.open("media/audio/" + arquivo);
+    }
 }]);

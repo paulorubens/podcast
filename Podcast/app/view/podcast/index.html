@@ -10,10 +10,31 @@
                                 <div width="130px" height="130px" images code="episodio.nmArquivoImagem"></div>
                             </td>
                             <td>
-                                <label style="width: 100%">{{episodio.dsTitulo}}</label>
-                                <label ng-init="returnDate(episodio, podcast.dtGravacao)">{{episodio.dtGravacaoVW}}</label><br />
-                                <label>{{episodio.dsPodcast}}</label><br />
-                                <div audios code="episodio.nmArquivoAudio"></div>
+                                <table>
+                                        <tr>
+                                            <td colspan="2">
+                                                <label style="width: 100%">{{podcast.dsTitulo}}</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label ng-init="returnDate(podcast, podcast.dtGravacao)">{{podcast.dtGravacaoVW}}</label>
+                                            </td>
+                                            <td>
+                                                <a ng-click="baixar(podcast.nmArquivoAudio)">Baixar</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <label>{{podcast.dsPodcast}}</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div audios code="podcast.nmArquivoAudio"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
                             </td>
                         </tr>
                     </tbody>
