@@ -13,25 +13,25 @@
                                 <table>
                                         <tr>
                                             <td colspan="2">
-                                                <label style="width: 100%">{{podcast.dsTitulo}}</label>
+                                                <label style="width: 100%">{{episodio.dsTitulo}}</label>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label ng-init="returnDate(podcast, podcast.dtGravacao)">{{podcast.dtGravacaoVW}}</label>
+                                                <label ng-init="returnDate(episodio, episodio.dtGravacao)">{{episodio.dtGravacaoVW}}</label>
                                             </td>
                                             <td>
-                                                <a ng-click="baixar(podcast.nmArquivoAudio)">Baixar</a>
+                                                <a ng-click="baixar(episodio.nmArquivoAudio)">Baixar</a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <label>{{podcast.dsPodcast}}</label>
+                                                <label>{{episodio.dsPodcast}}</label>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <div audios code="podcast.nmArquivoAudio"></div>
+                                                <div audios code="episodio.nmArquivoAudio"></div>
                                             </td>
                                         </tr>
                                     </table>
